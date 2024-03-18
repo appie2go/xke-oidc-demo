@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "connect/authorize?client_id=demo&response_type=id_token token&redirect_uri=https://localhost:7185/redirect&scope=openid profile&nonce=234562461246",
+      "applicationUrl": "https://localhost:7185",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

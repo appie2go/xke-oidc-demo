@@ -1,0 +1,67 @@
+@page
+@model OpenIdDictServer.Views.Authorize.Index
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Log in!</title>
+    <style>
+        div.main {
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 720px;
+        }
+        
+        div.users input {
+            height: 100px;
+            width: 100px;
+            float: left;
+            margin: 10px;
+            margin-right: 20px;
+            margin-left: 0px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="main users">
+    <h1>Login</h1>
+    
+    <h3>Choose who to impersonate:</h3>
+    
+    <form method="get">
+        <input type="hidden" name="client_id" id="client_id" />
+        <input type="hidden" name="response_type" id="response_type" />
+        <input type="hidden" name="redirect_uri" id="redirect_uri" />
+        <input type="hidden" name="scope" id="scope" />
+        <input type="hidden" name="nonce" id="nonce" />
+        
+        <input type="submit" name="subject" value="Sheev Palpatine"/>
+        <input type="submit" name="subject" value="Master Yoda"/>
+        <input type="submit" name="subject" value="Boba Fett"/>
+        <input type="submit" name="subject" value="Lando Calrissian"/>
+        <input type="submit" name="subject" value="R2D2"/>
+        <input type="submit" name="subject" value="Han Solo"/>
+        <input type="submit" name="subject" value="Luke Skywalker"/>
+        <input type="submit" name="subject" value="Chewbaka"/>
+        <input type="submit" name="subject" value="Obiwan Kenobi"/>
+        
+    </form>
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById("client_id").value = urlParams.get('client_id');
+        document.getElementById("response_type").value = urlParams.get('response_type');
+        document.getElementById("redirect_uri").value = urlParams.get('redirect_uri');
+        document.getElementById("scope").value = urlParams.get('scope');
+        document.getElementById("nonce").value = urlParams.get('nonce');
+    </script>
+</div>
+</body>
+</html>

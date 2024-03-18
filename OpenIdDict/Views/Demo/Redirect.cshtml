@@ -1,0 +1,60 @@
+@page
+@model OpenIdDictServer.Views.Demo.Redirect
+
+@{
+    Layout = null;
+}
+
+<h1>Sign in successful</h1>
+
+    <ul>
+        <li>
+            <ul>
+                <li>id_token</li>
+                <li id="idtoken"></li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>access_token</li>
+                <li id="accesstoken"></li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        
+        (function getAccessTokenFromHash() {
+            const hash = window.location.hash.substr(1); // Remove the '#' from the beginning
+            const queryParams = hash.split('&');
+        
+            // Iterate through query parameters to find access_token
+            for (let i = 0; i < queryParams.length; i++) {
+                const pair = queryParams[i].split('=');
+                if (pair[0] === 'id_token') {
+                    document.getElementById("idtoken").innerHTML = pair[1];
+                }
+                
+                if (pair[0] === 'access_token') {
+                    document.getElementById("accesstoken").innerHTML = pair[1];
+                }
+            }
+        
+            // Access token not found in hash
+            return null;
+        })();
+        
+        function clearAllCookies() {
+            var cookies = document.cookie.split(";");
+        
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+        }
+        
+    </script>
+
+    <a href="/connect/logout">Logout</a>
